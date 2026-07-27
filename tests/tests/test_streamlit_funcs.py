@@ -1,16 +1,44 @@
 from thremolia.report_validation import Mistake
 from thremolia.streamlit_gui import streamlit_funcs
 
+# Column order returned for an empty report follows get_column_list()'s order.
+CORRECT_EMPTY_REPORT_COLUMN_LIST = [
+    "id",
+    "element",
+    "threat_description",
+    "element_type",
+    "stride",
+    "owasp_top_10_2025",
+    "mitre_attack",
+    "owasp_top_10_for_llm",
+    "mitre_atlas",
+    "linddun",
+    "owasp_ml_sec_top_10_2023",
+    "mitigation",
+    "SDL_stage",
+    "cvss_vector",
+    "cvss_score",
+    "threat_source",
+    "validation",
+    "justification",
+    "mitigated",
+]
+
+# Column order for a non-empty report follows Threat's field declaration order.
 CORRECT_REPORT_COLUMN_LIST = [
     "id",
     "element",
     "threat_description",
     "element_type",
     "stride",
+    "mitre_attack",
+    "owasp_top_10_2025",
     "mitre_atlas",
     "owasp_top_10_for_llm",
     "linddun",
+    "owasp_ml_sec_top_10_2023",
     "mitigation",
+    "SDL_stage",
     "cvss_vector",
     "cvss_score",
     "threat_source",
@@ -30,7 +58,7 @@ CORRECT_MISTAKES_COLUMN_LIST = [
 def test_get_report_df_empty(report_factory):
     report = report_factory()
     dataframe = streamlit_funcs.get_report_df(report)
-    assert list(dataframe) == CORRECT_REPORT_COLUMN_LIST
+    assert list(dataframe) == CORRECT_EMPTY_REPORT_COLUMN_LIST
 
 
 def test_get_report_df(report_factory):
