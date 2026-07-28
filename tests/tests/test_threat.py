@@ -91,7 +91,7 @@ def test_threat_get_cvss_error(threat_factory, cvss_vector, expected_error):
     [
         ("LLM01: 2025 Prompt Injection", "LLM01: 2025 Prompt Injection"),
         ("Prompt Injection", "Prompt Injection"),
-        ("", ""),
+        ("", None),
         (None, None),
         ("LLM01", "LLM01: 2025 Prompt Injection"),
         ("LLM09", "LLM09: 2025 Misinformation"),
@@ -109,7 +109,7 @@ def test_threat_fix_category_owasp(threat_factory, owasp_id, expected_category):
     ("atlas_id", "expected_category"),
     [
         ("AML.T0042: Verify Attack", "AML.T0042: Verify Attack"),
-        ("", ""),
+        ("", None),
         (None, None),
         ("AML.T0042", "AML.T0042: Verify Attack"),
         ("AML.T0006", "AML.T0006: Active Scanning"),
